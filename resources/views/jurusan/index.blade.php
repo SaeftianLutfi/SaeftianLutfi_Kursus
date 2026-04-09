@@ -30,7 +30,7 @@
                         <td class="text-center">{{ $index + 1 }}</td>
                         <td>JRS-{{ str_pad($jurusan->kd_jurusan, 3, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $jurusan->nm_jurusan }}</td>
-                        <td>{{ $jurusan->durasi }}</td>
+                        <td>{{ $jurusan->durasi }} Bulan</td>
                         <td>Rp {{ number_format($jurusan->biaya, 0, ',', '.') }}</td>
                         <td class="text-center">
 

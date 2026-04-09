@@ -11,7 +11,7 @@ class Jurusan extends Model
     use HasFactory;
     protected $table = 't_jurusan';
     protected $primaryKey = 'kd_jurusan';
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = false;
     protected $fillable = [ 
         'nm_jurusan', 
@@ -19,10 +19,6 @@ class Jurusan extends Model
         'biaya'
     ];
 
-    public function pesertas()
-    {
-        return $this->hasMany(Peserta::class, 'kd_jurusan', 'kd_jurusan');
-    }
 
     public function pendaftarans()
     {

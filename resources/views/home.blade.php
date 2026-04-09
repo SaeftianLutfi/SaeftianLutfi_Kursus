@@ -93,7 +93,15 @@
                                 <span class="badge bg-danger">Perempuan</span>
                             @endif
                         </td>
-                        <td>{{ $peserta->jurusan->nm_jurusan ?? '-' }}</td>
+                        <td>
+                            @forelse($peserta->pendaftarans as $p)
+                                <span class="badge bg-success">
+                                    {{ $p->jurusan->nm_jurusan }}
+                                </span>
+                            @empty
+                                -
+                            @endforelse
+                        </td>
                         <td>{{ $peserta->no_hp }}</td>
                     </tr>
                 @empty

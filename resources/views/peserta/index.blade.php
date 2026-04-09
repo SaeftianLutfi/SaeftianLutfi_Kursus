@@ -33,7 +33,13 @@
                         <td>{{ $peserta->nm_peserta }}</td>
                         <td>{{ $peserta->jekel }}</td>
                         <td>
-                            {{ $peserta->jurusan->nm_jurusan ?? '-' }}
+                            @forelse($peserta->pendaftarans as $p)
+                                <span class="badge bg-success">
+                                    {{ $p->jurusan->nm_jurusan }}
+                                </span>
+                            @empty
+                                -
+                            @endforelse
                         </td>
                         <td>{{ $peserta->no_hp }}</td>
                         <td class="text-center">

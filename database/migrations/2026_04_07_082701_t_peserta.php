@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('t_peserta', function (Blueprint $table) {
             $table->id('id_peserta');
-            $table->foreignId('kd_jurusan')->references('kd_jurusan')->on('t_jurusan')->onDelete('cascade');
             $table->string('nm_peserta');
             $table->string('jekel');
             $table->string('alamat');

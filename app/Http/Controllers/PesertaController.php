@@ -13,7 +13,7 @@ class PesertaController extends Controller
     {
         $q = $request->q;
 
-        $pesertas = Peserta::with('jurusan')
+        $pesertas = Peserta::with('pendaftarans.jurusan')
             ->when($q, function ($query) use ($q) {
                 $query->where('nm_peserta', 'like', '%' . $q . '%');
             })
@@ -34,20 +34,18 @@ class PesertaController extends Controller
 
     public function index()
     {
-        $pesertas = Peserta::with('jurusan')->get();
+        $pesertas = Peserta::with('pendaftarans.jurusan')->get();
         return view('peserta.index', compact('pesertas'));
     }
 
     public function create()
     {
-        $jurusans = Jurusan::all();
-        return view('peserta.create', compact('jurusans'));
+        return view('peserta.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'kd_jurusan' => 'required|exists:t_jurusan,kd_jurusan',
             'nm_peserta' => 'required',
             'jekel' => 'required',
             'alamat' => 'required',
@@ -55,7 +53,6 @@ class PesertaController extends Controller
         ]);
 
         Peserta::create([
-            'kd_jurusan' => $request->kd_jurusan,
             'nm_peserta' => $request->nm_peserta,
             'jekel' => $request->jekel,
             'alamat' => $request->alamat,
@@ -69,14 +66,12 @@ class PesertaController extends Controller
     public function edit(string $id_peserta)
     {
         $peserta = Peserta::findOrFail($id_peserta);
-        $jurusans = Jurusan::all();
-        return view('peserta.edit', compact('peserta', 'jurusans'));
+        return view('peserta.edit', compact('peserta'));
     }
 
     public function update(Request $request, string $id_peserta)
     {
         $request->validate([
-            'kd_jurusan' => 'required|exists:t_jurusan,kd_jurusan',
             'nm_peserta' => 'required',
             'jekel' => 'required',
             'alamat' => 'required',
@@ -85,7 +80,6 @@ class PesertaController extends Controller
 
         $peserta = Peserta::findOrFail($id_peserta);
         $peserta->update([
-            'kd_jurusan' => $request->kd_jurusan,
             'nm_peserta' => $request->nm_peserta,
             'jekel' => $request->jekel,
             'alamat' => $request->alamat,

@@ -28,20 +28,6 @@
                 </select>
             </div>
 
-            <!-- Jurusan -->
-            <div class="mb-3">
-                <label class="form-label">Jurusan</label>
-                <select name="kd_jurusan" class="form-control" required>
-                    <option value="">-- Pilih Jurusan --</option>
-                    @foreach($jurusans as $jurusan)
-                        <option value="{{ $jurusan->kd_jurusan }}"
-                            {{ old('kd_jurusan') == $jurusan->kd_jurusan ? 'selected' : '' }}>
-                            {{ $jurusan->nm_jurusan }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
             <!-- Alamat -->
             <div class="mb-3">
                 <label class="form-label">Alamat</label>

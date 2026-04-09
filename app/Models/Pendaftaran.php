@@ -12,7 +12,7 @@ class Pendaftaran extends Model
 
     protected $table = 't_pendaftaran';
     protected $primaryKey = 'id_daftar';
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = false;
     protected $fillable = [
         'id_peserta',
